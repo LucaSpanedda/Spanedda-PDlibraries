@@ -1,0 +1,53 @@
+#N canvas 299 108 1003 540 12;
+#X obj 55 239 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 132 7 adc~;
+#X obj 102 7 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 78 435 dac~;
+#X obj 361 104 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 2 256;
+#X obj 425 105 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 16 256;
+#X obj 451 127 / 1000;
+#X obj 355 395 ui.scope~ @size 150 100 @receive "(null)" @send "(null)"
+@pinned 0 @background_color 0.93 0.93 0.93 1 @border_color 0.6 0.6
+0.6 1 @label_color 0 0 0 1 @active_color 0 0.75 1 1 @fontname "Helvetica"
+@fontweight "normal" @fontslant "roman" @fontsize 11 @label "(null)"
+@label_inner 0 @label_side "top" @label_align "left" @label_valign
+"top" @label_margins 0 0 @max 1 @min -1 @window 2048 @refresh 40;
+#X obj 82 265 splicePH~;
+#X obj 245 231 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 129 327 *~;
+#X obj 118 354 tabread4~ bufferDS~;
+#X obj 159 287 sig~;
+#X obj 68 394 *~;
+#X obj 70 42 bufferDS~;
+#X obj 514 396 ui.scope~ @size 150 100 @receive "(null)" @send "(null)"
+@pinned 0 @background_color 0.93 0.93 0.93 1 @border_color 0.6 0.6
+0.6 1 @label_color 0 0 0 1 @active_color 0 0.75 1 1 @fontname "Helvetica"
+@fontweight "normal" @fontslant "roman" @fontsize 11 @label "(null)"
+@label_inner 0 @label_side "top" @label_align "left" @label_valign
+"top" @label_margins 0 0 @max 1 @min -1 @window 2048 @refresh 40;
+#X obj 528 355 *~;
+#X connect 0 0 8 0;
+#X connect 1 0 14 1;
+#X connect 2 0 14 0;
+#X connect 4 0 8 1;
+#X connect 5 0 6 0;
+#X connect 6 0 8 2;
+#X connect 8 0 10 0;
+#X connect 8 0 16 0;
+#X connect 8 1 13 1;
+#X connect 8 1 16 1;
+#X connect 9 0 12 0;
+#X connect 10 0 11 0;
+#X connect 11 0 7 0;
+#X connect 11 0 13 0;
+#X connect 12 0 10 1;
+#X connect 13 0 3 0;
+#X connect 13 0 3 1;
+#X connect 14 0 0 0;
+#X connect 14 1 9 0;
+#X connect 16 0 15 0;

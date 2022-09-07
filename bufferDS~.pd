@@ -1,0 +1,116 @@
+#N canvas -14 0 1366 695 12;
+#X obj 19 9 inlet;
+#X obj 94 215 + 1;
+#X obj 142 192 + 1;
+#X obj 110 255 nbx 5 14 -1e+037 1e+037 0 0 empty empty current_count
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 97 190 f;
+#X obj 122 147 t b;
+#X msg 262 304 stop;
+#X obj 65 9 inlet~;
+#X symbolatom 92 41 0 0 0 0 - - -;
+#X msg 111 304 open \$1 \, start;
+#X obj 152 54 tgl 15 0 empty empty rec_on/off 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 109 118 bng 12 250 50 0 empty empty rec 17 7 0 10 -262144 -1
+-1;
+#X obj 152 118 bng 12 250 50 0 empty empty stop 17 7 0 10 -262144 -1
+-1;
+#X obj 152 78 sel 0;
+#X obj 199 78 sel 1;
+#X obj 262 328 t b;
+#X obj 30 356 writesf~ 1;
+#X obj 199 580 nbx 5 14 -1e+037 1e+037 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 307 488 soundfiler;
+#X obj 254 386 pack f f;
+#X obj 254 408 unpack f f;
+#X obj 494 642 print;
+#X obj 343 432 nbx 5 14 -1e+037 1e+037 0 0 empty empty current_count
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 254 354 del 100;
+#X obj 121 276 makefilename record-%d.wav;
+#X obj 214 489 samplerate~;
+#X obj 193 514 nbx 5 14 -1e+037 1e+037 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 44100 256;
+#X obj 211 455 loadbang;
+#X obj 232 548 /;
+#X obj 153 454 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 307 514 t b f f;
+#X text 400 71 Data Storage Buffer;
+#X obj 199 612 outlet;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array bufferDS~ 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.19209e-007
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 409 116 graph;
+#X msg 317 460 read -resize record-\$1.wav bufferDS~;
+#X obj 441 580 nbx 5 14 -1e+037 1e+037 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 441 613 outlet;
+#X obj 752 588 nbx 5 14 -1e+037 1e+037 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 752 561 /;
+#X obj 752 616 outlet;
+#X obj 815 641 print;
+#X msg 815 614 \$1 seconds recording in bufferDS~;
+#X msg 494 615 \$1 samples recording in bufferDS~;
+#X obj 252 639 print;
+#X msg 252 612 \$1 Hz for read bufferDS~;
+#X msg 10 611 record-\$1.wav bufferDS~;
+#X obj 9 637 print;
+#X connect 0 0 10 0;
+#X connect 1 0 3 0;
+#X connect 2 0 4 1;
+#X connect 3 0 19 1;
+#X connect 3 0 24 0;
+#X connect 4 0 2 0;
+#X connect 4 0 1 0;
+#X connect 5 0 4 0;
+#X connect 6 0 15 0;
+#X connect 6 0 16 0;
+#X connect 7 0 16 0;
+#X connect 9 0 16 0;
+#X connect 10 0 13 0;
+#X connect 10 0 14 0;
+#X connect 11 0 5 0;
+#X connect 12 0 6 0;
+#X connect 13 0 12 0;
+#X connect 14 0 11 0;
+#X connect 15 0 23 0;
+#X connect 17 0 32 0;
+#X connect 17 0 44 0;
+#X connect 18 0 30 0;
+#X connect 19 0 20 0;
+#X connect 20 1 22 0;
+#X connect 22 0 34 0;
+#X connect 22 0 45 0;
+#X connect 23 0 19 0;
+#X connect 24 0 9 0;
+#X connect 24 0 8 0;
+#X connect 25 0 26 0;
+#X connect 26 0 28 0;
+#X connect 26 0 38 1;
+#X connect 27 0 25 0;
+#X connect 28 0 17 0;
+#X connect 29 0 25 0;
+#X connect 29 0 18 0;
+#X connect 30 0 28 0;
+#X connect 30 1 28 1;
+#X connect 30 1 38 0;
+#X connect 30 2 35 0;
+#X connect 34 0 18 0;
+#X connect 35 0 36 0;
+#X connect 35 0 42 0;
+#X connect 37 0 39 0;
+#X connect 37 0 41 0;
+#X connect 38 0 37 0;
+#X connect 41 0 40 0;
+#X connect 42 0 21 0;
+#X connect 44 0 43 0;
+#X connect 45 0 46 0;
+#X coords -1 -1 1 1 220 160 2 400 100;
